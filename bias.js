@@ -64,7 +64,7 @@ B. Framing bias 57
 - Intensifiers 19 -- 33.3%
 - One-sided terms 38 -- 66.6*/
 
-
+var biasWords = [];
 
 //Epistemological bias - arrays of biased language
 
@@ -108,9 +108,10 @@ var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gen
 
 //Unprovable assertions about another human's thought process/includes oft-misused inflamatory language
 /*
-sources: 
+politically-specific sources: 
 https://www.vice.com/en_us/article/mg9pvx/every-insult-the-right-uses-to-troll-liberals-explained - conservative
-https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal*/
+https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal
+*/
 var buzzwords = ["-phobic","-phobia","racist","classist","sexist","misogynist","bigot","anti-semitic","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","deepen the conversation","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered","gender-neutral","extremist","gatekeeper","gaslight","puppet","trolled","liberal media","conservative media","authoritarianism","intolerance","hate speech","offensive"];
 
 
@@ -120,7 +121,8 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 
 //put suspect words and phrases HERE. (debatable bias, lack of classification, etc.)
 //*************
-/*"targeted for harassment"
+/*
+"targeted for harassment"
 "blasted an email"
 "went viral"
 "viral tweet"
@@ -128,7 +130,7 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "off the rails"
 "in solidarity with"
 "could spell disaster"
-SPLIT_CONTRACTIONS: false,"smash hit"
+"smash hit"
 "squelch"
 "quite the opposite"
 "brain dead"
@@ -183,14 +185,13 @@ tokenize: function(words, regex) {
     words = words.replace(/^/g, SP);
 
     words = words.replace(/([^'])' | '/g, "$1 ' ");
-
     words = words.replace(/ \u2018/g, " \u2018 ");
 
     words = words.replace(/'([SMD]) /g, " '$1 ");
 
 
 
-    if (RiTa.SPLIT_CONTRACTIONS) {
+    if (bias.SPLIT_CONTRACTIONS) {
 
       words = words.replace(/([Cc])an['’]t/g, "$1an not");
 
@@ -232,9 +233,22 @@ framing: function(userInput){
 //epistemological bias
 epistemological:function(userInput){
 	
+},
+	
+
+
+//total percent bias: number of biased words / total number of words
+percentBias:function(userInput){
+	var allBiasWords = biasWords.concat(buzzwords).concat(intensifiers).concat(oneSidedTerms);
+	
+	var userTokens = bias.tokenize(userInput);
+	
+	var totalWords = userTokens.length
+	
 }
+//**no comment after last function
 
-
-}, //END bias
+},
+//END bias
     
     
