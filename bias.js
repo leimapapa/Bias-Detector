@@ -26,7 +26,7 @@ and pretentious houses.
 
 
 //Epistemological Bias
-
+ 
 /*
 The second class, epistemological
 bias, is related to linguistic features that
@@ -36,7 +36,7 @@ of a proposition.
 (2) 
 a. Kuypers **claimed** that the mainstream press in America
 tends to favor liberal viewpoints.
-b. Kuypers **stated** that the mainstream press in America
+eb. Kuypers **stated** that the mainstream press in America
 tends to favor liberal viewpoints.
 
 In (2), the assertive **stated** removes the bias introduced by **claimed**,
@@ -46,7 +46,7 @@ which casts doubt on Kuypers’ statement.
 Epistemological bias is bidirectional, that is,
 bias can occur because doubt is cast on a proposition
 commonly assumed to be true, or because
-a presupposition or implication is made about a
+ua presupposition or implication is made about a
 proposition commonly assumed to be false
 */
 
@@ -56,7 +56,7 @@ Percent of bias seen on Wikipedia by subtype.
 	This will be used as a strength so as to assign a certain amount of 
 	'forgiveness' to certain types of bias.
 
-
+"
 Bias Subtype %
 
 A. Epistemological bias 43
@@ -73,7 +73,7 @@ B. Framing bias 57
 
 
 //Epistemological bias - arrays of biased language
-
+;
 
 //Factive predicate = a predicate which entails or presupposes the truth of one of its arguments.
 var factivePredicates = ["realized", "revealed"];
@@ -96,20 +96,20 @@ var hedges = ["will","certainly"];
 //Intensifiers - adjectives or adverbs that add (subjective) force to the meaning of a phrase or proposition.
 var intensifiers = ["fantastic","outrageous","outstanding","hatred","love","vile","disgusting","so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", as in "awful good" "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking","fucking awesome", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "real", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially"];
 
-var posIntensifiers = ["absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very","awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully"];
+var posIntensifiers = ["hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully"];
 
-var negIntensifiers = ["insane","crazy","dreadfully","colossally", "especially", "exceptionally", "excessively", "extremely", "extraordinarily", "fantastically", "frightfully"];
+var negIntensifiers = ["insane","crazy","dreadfully","colossally", "especially", "exceptionally", "excessively", "extremely", "extraordinarily", "fantastically", "frightfully","off the rails"];
 
 //One-sided Terms - reflect only one of the sides of a contentious issue.
-var oneSidedTerms = ["pro-choice","pro-life","liberated","captured","terrorist","paramilitary"];
+var oneSidedTerms = ["pro-choice","pro-life","liberated","captured","terrorist","paramilitary","captured","recorded"];
 
-var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary"];
-var negOneSidedTerms = ["pro-death","anti-choice","captured","terrorist"];
+//Flip-side of each term should be listed in the same index
+var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary","gender confirmation surgery","called out","takedown"];
+var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gender reassignment surgery","assailed","rant"];
 
 
-//Unprovable assertions about another human's thought process
-var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","bigoted"];
-
+//Unprovable assertions about another human's thought process/includes oft-misused inflamatory language
+var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","hypocrisy"];
 
 
 //Stop words - words so common that you should ignore them completely
