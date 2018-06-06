@@ -88,11 +88,11 @@ var hedges = ["will","certainly","undoubtedly"];
 //Framing bias - arrays of biased language
 
 //Intensifiers - adjectives or adverbs that ADD (subjective) force to the meaning of a phrase or proposition.
-var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good" "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious"];
+var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good" "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious","utmost","self-proclaimed"];
 
-var posIntensifiers = ["as hell", "fiercely", "hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully","devestatingly","in sharp contrast"];
+var posIntensifiers = ["as hell", "fiercely", "hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully","devestatingly","in sharp contrast","deservedly","exactly right"];
 
-var negIntensifiers = ["savagely","insane","crazy","dreadfully","colossally", "especially", "exceptionally", "excessively", "extremely", "extraordinarily", "fantastically", "frightfully","overly","meager","abysmal","hard to imagine"];
+var negIntensifiers = ["savagely","insane","crazy","dreadfully","colossally", "especially", "exceptionally", "excessively", "extremely", "extraordinarily", "fantastically", "frightfully","overly","meager","abysmal","hard to imagine","overwhelmingly","frighteningly","fantastical","cripplingly","troublingly","horrific","irredeemable","inflammatory"];
 
 //Minimizers - adjectives or adverbs that REMOVE (subjective) force from the meaning of a phrase or proposition.
 var minimizers = ["just"];
@@ -112,7 +112,7 @@ sources:
 https://www.vice.com/en_us/article/mg9pvx/every-insult-the-right-uses-to-troll-liberals-explained - conservative
 https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal
 */
-var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","anti-semitic","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered","gender-neutral","extremist","gatekeep","gaslight","puppet","trolled","liberal media","conservative media"];
+var buzzwords = ["-phobic","-phobia","racist","classist","sexist","misogynist","bigot","anti-semitic","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","deepen the conversation","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered","gender-neutral","extremist","gatekeeper","gaslight","puppet","trolled","liberal media","conservative media","authoritarianism","intolerance","hate speech","offensive"];
 
 
 //Stop words - words so common that you should ignore them completely (taken from Python NLTK)
@@ -132,6 +132,19 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "could spell disaster"
 "smash hit"
 "squelch"
+"quite the opposite"
+"brain dead"
+"imposing"
+"come back and bite"
+"torches"
+"basket case"
+"effectively nukes"
+"sowing division"
+"fight back"
+"demagoguery"
+"backtracking"
+"tore apart"
+"dehumanize"
 *
 //*************
 
