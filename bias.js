@@ -110,8 +110,7 @@ var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gen
 /*
 sources: 
 https://www.vice.com/en_us/article/mg9pvx/every-insult-the-right-uses-to-troll-liberals-explained - conservative
-https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal
-*/
+https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal*/
 var buzzwords = ["-phobic","-phobia","racist","classist","sexist","misogynist","bigot","anti-semitic","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","deepen the conversation","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered","gender-neutral","extremist","gatekeeper","gaslight","puppet","trolled","liberal media","conservative media","authoritarianism","intolerance","hate speech","offensive"];
 
 
@@ -121,8 +120,7 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 
 //put suspect words and phrases HERE. (debatable bias, lack of classification, etc.)
 //*************
-/*
-"targeted for harassment"
+/*"targeted for harassment"
 "blasted an email"
 "went viral"
 "viral tweet"
@@ -130,7 +128,7 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "off the rails"
 "in solidarity with"
 "could spell disaster"
-"smash hit"
+SPLIT_CONTRACTIONS: false,"smash hit"
 "squelch"
 "quite the opposite"
 "brain dead"
@@ -145,18 +143,98 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "backtracking"
 "tore apart"
 "dehumanize"
-*
+*/
 //*************
 
+var bias = {
+
+//RiTa trim function - Howe, D. C. (2015). RiTa [Computer software]. Retrieved from http://rednoise.org/rita
+trim: function(str) {
+
+    return trim(str); // delegate to private
+
+},
+SPLIT_CONTRACTIONS: false,
+//RiTa tokenize function - Howe, D. C. (2015). RiTa [Computer software]. Retrieved from http://rednoise.org/rita 
+tokenize: function(words, regex) {
+	
+    if (!is(words,S)) return [];
+
+    if (regex) return words.split(regex);
+	
+    words = trim(words);
+
+    words = words.replace(/([\\?!\"\u201C\\.,;:@#$%&])/g, " $1 ");
+
+    words = words.replace(/\\.\\.\\./g, " ... ");
+
+    words = words.replace(/\\s+/g, SP);
+
+    words = words.replace(/,([^0-9])/g, " , $1");
+
+    words = words.replace(/([^.])([.])([\])}>\"'’]*)\\s*$/g, "$1 $2$3 ");
+
+    words = words.replace(/([\[\](){}<>])/g, " $1 ");
+
+    words = words.replace(/--/g, " -- ");
+
+    words = words.replace(/$/g, SP);
+
+    words = words.replace(/^/g, SP);
+
+    words = words.replace(/([^'])' | '/g, "$1 ' ");
+
+    words = words.replace(/ \u2018/g, " \u2018 ");
+
+    words = words.replace(/'([SMD]) /g, " '$1 ");
 
 
 
-function framingBias(userInput){
+    if (RiTa.SPLIT_CONTRACTIONS) {
+
+      words = words.replace(/([Cc])an['’]t/g, "$1an not");
+
+      words = words.replace(/([Dd])idn['’]t/g, "$1id not");
+
+      words = words.replace(/([CcWw])ouldn['’]t/g, "$1ould not");
+
+      words = words.replace(/([Ss])houldn['’]t/g, "$1hould not");
+
+      words = words.replace(/ ([Ii])t['’]s/g, " $1t is");
+
+      words = words.replace(/n['’]t /g, " not ");
+
+      words = words.replace(/['’]ve /g, " have ");
+
+      words = words.replace(/['’]re /g, " are ");
+    }
+	
+    // "Nicole I. Kidman" gets tokenized as "Nicole I . Kidman"
+
+    words = words.replace(/ ([A-Z]) \\./g, " $1. ");
+
+    words = words.replace(/\\s+/g, SP);
+
+    words = words.replace(/^\\s+/g, E);
+
+
+
+    return trim(words).split(/\s+/);
+
+  },
+
+//framing bias
+framing: function(userInput){
+	
+},
+
+
+//epistemological bias
+epistemological:function(userInput){
 	
 }
 
 
-
-function epistemologicalBias(userInput){
-	
-}
+}, //END bias
+    
+    
