@@ -11,7 +11,7 @@ The first, framing bias, is realized by subjective
 words or phrases linked with a particular
 point of view.
  
-,(1) 
+(1) 
 a. Usually, smaller cottage-style houses have been demolished
 to make way for these **McMansions**.
 b. Usually, smaller cottage-style houses have been demolished
@@ -38,7 +38,7 @@ tends to favor liberal viewpoints.
 
 In (2), the assertive **stated** removes the bias introduced by **claimed**,
 which casts doubt on Kuypers’ statement.
-v
+
 
 Epistemological bias is bidirectional, that is,
 bias can occur because doubt is cast on a proposition
@@ -46,8 +46,7 @@ commonly assumed to be true, or because
 ua presupposition or implication is made about a
 proposition commonly assumed to be false
 */
-/*
-Percent of bias seen on Wikipedia by subtype.
+/*Percent of bias seen on Wikipedia by subtype.
 
 	This will be used as a strength so as to assign a certain amount of 
 	'forgiveness' to certain types of bias.
@@ -63,9 +62,8 @@ A. Epistemological bias 43
 
 B. Framing bias 57
 - Intensifiers 19 -- 33.3%
-- One-sided terms 38 -- 66.6%
+- One-sided terms 38 -- 66.6
 */
-
 
 
 
@@ -74,7 +72,7 @@ B. Framing bias 57
 
 //Factive predicate = a predicate which entails or presupposes the truth of one of its arguments.
 var factivePredicates = ["realized", "revealed"];
-
+d
 
 //Entailments = directional relations that hold whenever the truth of one word or phrase follows from another, //e.g., murder entails kill because there cannot be murdering without killing 
 var entailments = ["murder", "slay","was coerced into"];
@@ -84,8 +82,8 @@ var entailments = ["murder", "slay","was coerced into"];
 var assertives = ["pointed out", "clearly states"];
 
 
-//Hedges - used to reduce one’s commitment to the truth of a proposition, thus avoiding any bold predictions
-var hedges = ["will","certainly"];
+w//Hedges - used to reduce one’s commitment to the truth of a proposition, thus avoiding any bold predictions
+wvar hedges = ["will","certainly"];
 
 
 //Framing bias - arrays of biased language
@@ -105,8 +103,8 @@ var minimizers = ["just"];
 var oneSidedTerms = ["pro-choice","pro-life","liberated","captured","terrorist","paramilitary","captured","recorded"];
 
 //Flip-side of each term should be listed in the same index
-var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary","gender confirmation surgery","called out","takedown","earned","call out","witch hunt","pushed back","refused","wide margin"];
-var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gender reassignment surgery","assailed","rant","unfairly received","attack","investigation","disagreed","declined","landslide"];
+var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary","gender confirmation surgery","called out","takedown","earned","call out","witch hunt","pushed back","refused","landslide","undocumented migrant"];
+var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gender reassignment surgery","assailed","rant","unfairly received","attack","investigation","disagreed","declined","wide margin","illegal immigrant"];
 
 
 //Unprovable assertions about another human's thought process/includes oft-misused inflamatory language
@@ -115,7 +113,7 @@ sources:
 https://www.vice.com/en_us/article/mg9pvx/every-insult-the-right-uses-to-troll-liberals-explained - conservative
 https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal
 */
-var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered",];
+var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered","gender-neutral","extremist","gatekeep","gaslight"];
 
 
 //Stop words - words so common that you should ignore them completely (taken from Python NLTK)
@@ -131,6 +129,7 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "viral tweet"
 "broke the internet"
 "off the rails"
+"in solidarity with"
 *
 //*************
 
