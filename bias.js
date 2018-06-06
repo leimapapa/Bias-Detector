@@ -93,23 +93,26 @@ var hedges = ["will","certainly"];
 
 //Framing bias - arrays of biased language
 
-//Intensifiers - adjectives or adverbs that add (subjective) force to the meaning of a phrase or proposition.
+//Intensifiers - adjectives or adverbs that ADD (subjective) force to the meaning of a phrase or proposition.
 var intensifiers = ["fantastic","outrageous","outstanding","hatred","love","vile","disgusting","so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", as in "awful good" "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking","fucking awesome", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "real", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially"];
 
-var posIntensifiers = ["hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully"];
+var posIntensifiers = ["fiercely", "hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully"];
 
 var negIntensifiers = ["insane","crazy","dreadfully","colossally", "especially", "exceptionally", "excessively", "extremely", "extraordinarily", "fantastically", "frightfully","off the rails"];
+
+//Minimizers - adjectives or adverbs that REMOVE (subjective) force from the meaning of a phrase or proposition.
+var minimizers = ["just"]
 
 //One-sided Terms - reflect only one of the sides of a contentious issue.
 var oneSidedTerms = ["pro-choice","pro-life","liberated","captured","terrorist","paramilitary","captured","recorded"];
 
 //Flip-side of each term should be listed in the same index
-var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary","gender confirmation surgery","called out","takedown"];
-var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gender reassignment surgery","assailed","rant"];
+var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary","gender confirmation surgery","called out","takedown","earned","call out","witch hunt","pushed back","refused"];
+var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gender reassignment surgery","assailed","rant","unfairly received","attack","investigation","disagreed","declined"];
 
 
 //Unprovable assertions about another human's thought process/includes oft-misused inflamatory language
-var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","hypocrisy"];
+var buzzwords = ["-phobic","-phobia","racist","classist","sexist","bigot","hypocrisy","gun-grabber","climate-denier","shill",];
 
 
 //Stop words - words so common that you should ignore them completely
