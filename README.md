@@ -2,10 +2,10 @@
 The intent is to use scientific papers on bias in writing to identify ways to detect and measure bias on a scale.
 
 ## Sources
-The main source so far is this research paper from Stanford, located here:
-```
-[Neutrality study](https://web.stanford.edu/~jurafsky/pubs/neutrality.pdf)
-```
+The main source so far is this research paper on neutrality in writing from Stanford.
+
+* [Neutrality study](https://web.stanford.edu/~jurafsky/pubs/neutrality.pdf)
+
 
 ### Dependencies
 
