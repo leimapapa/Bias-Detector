@@ -7,7 +7,7 @@ The main source so far is this research paper on neutrality in writing from Stan
 * [Neutrality study](https://web.stanford.edu/~jurafsky/pubs/neutrality.pdf)
 
 
-### Dependencies
+## Dependencies
 
 * [TensorFlow.js](https://js.tensorflow.org/) - To be used to train an AI to recognize bias. Parameterized cues will be passed into the tensors.
 * [NLTK](http://www.nltk.org/) - Natural Language Toolkit - To be used to parse out the various words (bag of words).
