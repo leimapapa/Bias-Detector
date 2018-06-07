@@ -88,7 +88,7 @@ var hedges = ["will","certainly","undoubtedly"];
 //Framing bias - arrays of biased language
 
 //Intensifiers - adjectives or adverbs that ADD (subjective) force to the meaning of a phrase or proposition.
-var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good", "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious","utmost","self-proclaimed"];
+var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good", "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride", "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious","utmost","self-proclaimed"];
 
 var posIntensifiers = ["as hell", "fiercely", "hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully","devestatingly","in sharp contrast","deservedly","exactly right"];
 
@@ -148,81 +148,12 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 */
 //*************
 
+var punctuation = ["'","\"",",",".","?",":",";","!","#","--","-","%"];
+
+
+//**************begin bias functions***************
 var bias = {
 
-//RiTa trim function - Howe, D. C. (2015). RiTa [Computer software]. Retrieved from http://rednoise.org/rita
-trim: function(str) {
-
-    return trim(str); // delegate to private
-
-},
-SPLIT_CONTRACTIONS: false,
-//RiTa tokenize function - Howe, D. C. (2015). RiTa [Computer software]. Retrieved from http://rednoise.org/rita 
-tokenize: function(words, regex) {
-	
-    if (!is(words,S)) return [];
-
-    if (regex) return words.split(regex);
-	
-    words = trim(words);
-
-    words = words.replace(/([\\?!\"\u201C\\.,;:@#$%&])/g, " $1 ");
-
-    words = words.replace(/\\.\\.\\./g, " ... ");
-
-    words = words.replace(/\\s+/g, SP);
-
-    words = words.replace(/,([^0-9])/g, " , $1");
-
-    words = words.replace(/([^.])([.])([\])}>\"'’]*)\\s*$/g, "$1 $2$3 ");
-
-    words = words.replace(/([\[\](){}<>])/g, " $1 ");
-
-    words = words.replace(/--/g, " -- ");
-
-    words = words.replace(/$/g, SP);
-
-    words = words.replace(/^/g, SP);
-
-    words = words.replace(/([^'])' | '/g, "$1 ' ");
-    words = words.replace(/ \u2018/g, " \u2018 ");
-
-    words = words.replace(/'([SMD]) /g, " '$1 ");
-
-
-
-    if (bias.SPLIT_CONTRACTIONS) {
-
-      words = words.replace(/([Cc])an['’]t/g, "$1an not");
-
-      words = words.replace(/([Dd])idn['’]t/g, "$1id not");
-
-      words = words.replace(/([CcWw])ouldn['’]t/g, "$1ould not");
-
-      words = words.replace(/([Ss])houldn['’]t/g, "$1hould not");
-
-      words = words.replace(/ ([Ii])t['’]s/g, " $1t is");
-
-      words = words.replace(/n['’]t /g, " not ");
-
-      words = words.replace(/['’]ve /g, " have ");
-
-      words = words.replace(/['’]re /g, " are ");
-    }
-	
-    // "Nicole I. Kidman" gets tokenized as "Nicole I . Kidman"
-
-    words = words.replace(/ ([A-Z]) \\./g, " $1. ");
-
-    words = words.replace(/\\s+/g, SP);
-
-    words = words.replace(/^\\s+/g, E);
-
-
-
-    return trim(words).split(/\s+/);
-
-  },
 
 //framing bias
 framing: function(userInput){
@@ -235,48 +166,78 @@ epistemological:function(userInput){
 	
 },
 	
-intersect_arrays:function(a, b) {
-    var sorted_a = a.concat().sort();
-    var sorted_b = b.concat().sort();
-    var common = [];
-    var a_i = 0;
-    var b_i = 0;
 
-    while (a_i < a.length
-           && b_i < b.length)
-    {
-        if (sorted_a[a_i] === sorted_b[b_i]) {
-            common.push(sorted_a[a_i]);
-            a_i++;
-            b_i++;
-        }
-        else if(sorted_a[a_i] < sorted_b[b_i]) {
-            a_i++;
-        }
-        else {
-            b_i++;
-        }
-    }
-    return common;
+totalBiasWords:function(userInput){
+	
+	var allBiasWords = biasWords.concat(buzzwords).concat(intensifiers).concat(oneSidedTerms).concat(posIntensifiers).concat(negIntensifiers);
+	
+	var userTokens = RiTa.tokenize(userInput);
+		
+	//convert all words to lowercase
+	var tmp = userTokens.join('~').toLowerCase();
+	userTokens = tmp.split('~');
+
+	//https://stackoverflow.com/questions/35249774/remove-all-elements-from-array-that-match-specific-string
+	
+	//removes punctuation from tokenized array
+	userTokens = userTokens.filter(function(val){return (punctuation.indexOf(val) == -1 ? true : false)})
+	//console.log(userTokens.length + " minus punctuation");
+	
+	//removes stopwords from tokenized array
+	userTokens = userTokens.filter(function(val){return (stopwords.indexOf(val) == -1 ? true : false)})
+	//console.log(userTokens.length + " minus stopwords");
+	
+	//removes biased words from tokenized array
+	userTokensNoBias = userTokens.filter(function(val){return (allBiasWords.indexOf(val) == -1 ? true : false)})
+	//console.log(userTokensNoBias.length + " minus bias");
+
+	var totalWords = userTokens.length;
+	
+	var totalNoBiasWords = userTokensNoBias.length;
+	
+	var biasTotal = totalWords - totalNoBiasWords; 
+	
+	console.log(biasTotal + " biased words used out of " + totalWords + " total meaningful words");
+	
 },
-
 
 //total percent bias: number of biased words / total number of words
 percentBias:function(userInput){
-	var allBiasWords = biasWords.concat(buzzwords).concat(intensifiers).concat(oneSidedTerms);
 	
-	var userTokens = bias.tokenize(userInput);
+	var allBiasWords = biasWords.concat(buzzwords).concat(intensifiers).concat(oneSidedTerms).concat(posIntensifiers).concat(negIntensifiers);
 	
+	var userTokens = RiTa.tokenize(userInput);
+	
+	//convert all words to lowercase
+	var tmp = userTokens.join('~').toLowerCase();
+	userTokens = tmp.split('~');
+	
+	//removes punctuation from tokenized array
+	userTokens = userTokens.filter(function(val){return (punctuation.indexOf(val) == -1 ? true : false)})
+	//console.log(userTokens.length + " minus punctuation");
+	
+	//removes stopwords from tokenized array
+	userTokens = userTokens.filter(function(val){return (stopwords.indexOf(val) == -1 ? true : false)})
+	//console.log(userTokens.length + " minus stopwords");
+	
+	//removes biased words from tokenized array
+	userTokensNoBias = userTokens.filter(function(val){return (allBiasWords.indexOf(val) == -1 ? true : false)})
+	//console.log(userTokensNoBias.length + " minus bias");
+
 	var totalWords = userTokens.length;
 	
-	var txt = bias.intersect_arrays(userTokens,allBiasWords);
+	var totalNoBiasWords = userTokensNoBias.length;
 	
-	var biasedWordsUsed = txt.length;
+	var biasTotal = totalWords - totalNoBiasWords;
+	
+	var biasPercent = ((biasTotal / totalWords)*100).toFixed(2);
+	
+	console.log(biasPercent + "% of the words are biased");
 	
 }
-//**no comment after last function
+//**no comma after last function
 
-},
+};
 //END bias
     
     
