@@ -1,5 +1,5 @@
-# Bias-Detector
-The intent is to use scientific papers on bias in writing to identify ways to detect and measure bias on a scale.
+# Bias.js
+Using scientific papers on bias in writing to identify ways to detect and measure bias.
 
 ## Sources
 The main source so far is this research paper on neutrality in writing from Stanford.
