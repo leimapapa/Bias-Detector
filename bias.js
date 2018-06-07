@@ -199,6 +199,8 @@ totalBiasWords:function(userInput){
 	
 	console.log(biasTotal + " biased words used out of " + totalWords + " total meaningful words");
 	
+	document.getElementById("totalBiasArea").innerHTML = (biasTotal + " biased words used out of " + totalWords + " total meaningful words");
+	
 },
 
 //total percent bias: number of biased words / total number of words
@@ -233,6 +235,8 @@ percentBias:function(userInput){
 	var biasPercent = ((biasTotal / totalWords)*100).toFixed(2);
 	
 	console.log(biasPercent + "% of the words are biased");
+	
+	document.getElementById("percentBiasArea").innerHTML = (biasPercent + "% of the words are biased");
 	
 }
 //**no comma after last function
