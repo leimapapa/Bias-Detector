@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>bias.js</title>
+<script src="bias.js"></script>
+<script src="rita.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="well-lg">
+<textarea style="width:100%;" id="userInput" title="text here" placeholder="Type here..."></textarea>
+<br/>
+<br/>
+<button class="btn btn-success btn-lg btn-block" onclick="bias.percentBias(document.getElementById('userInput').value)">Percent Bias</button>
+<br/>
+
+<button class="btn btn-primary btn-lg btn-block" onclick="bias.totalBiasWords(document.getElementById('userInput').value)">Total Bias Words</button>
+</div>
+</body>
+</html>
