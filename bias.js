@@ -88,7 +88,7 @@ var hedges = ["will","certainly","undoubtedly"];
 //Framing bias - arrays of biased language
 
 //Intensifiers - adjectives or adverbs that ADD (subjective) force to the meaning of a phrase or proposition.
-var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good" "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious","utmost","self-proclaimed"];
+var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good", "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride" "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious","utmost","self-proclaimed"];
 
 var posIntensifiers = ["as hell", "fiercely", "hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully","devestatingly","in sharp contrast","deservedly","exactly right"];
 
@@ -235,6 +235,30 @@ epistemological:function(userInput){
 	
 },
 	
+intersect_arrays:function(a, b) {
+    var sorted_a = a.concat().sort();
+    var sorted_b = b.concat().sort();
+    var common = [];
+    var a_i = 0;
+    var b_i = 0;
+
+    while (a_i < a.length
+           && b_i < b.length)
+    {
+        if (sorted_a[a_i] === sorted_b[b_i]) {
+            common.push(sorted_a[a_i]);
+            a_i++;
+            b_i++;
+        }
+        else if(sorted_a[a_i] < sorted_b[b_i]) {
+            a_i++;
+        }
+        else {
+            b_i++;
+        }
+    }
+    return common;
+},
 
 
 //total percent bias: number of biased words / total number of words
@@ -243,7 +267,11 @@ percentBias:function(userInput){
 	
 	var userTokens = bias.tokenize(userInput);
 	
-	var totalWords = userTokens.length
+	var totalWords = userTokens.length;
+	
+	var txt = bias.intersect_arrays(userTokens,allBiasWords);
+	
+	var biasedWordsUsed = txt.length;
 	
 }
 //**no comment after last function
