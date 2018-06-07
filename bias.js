@@ -2,7 +2,7 @@
 
 //Created with guidance from https://web.stanford.edu/~jurafsky/pubs/neutrality.pdf
 
-
+//https://www.youtube.com/watch?v=627VBkAhKTc
 
 //Framing Bias
 /* 
