@@ -1,9 +1,31 @@
 <html>
 <head>
 <title>bias.js</title>
-<script src="./bias.js"></script>
-<script src="./rita.min.js"></script>
+<script src="bias.js"></script>
+<script src="rita.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+#percentBiasArea{
+	border:6px solid green;
+	height:12vh;
+	text-align:center;
+	width:80%;
+	border-bottom-left-radius:30%;
+	border-bottom-right-radius:30%;
+	padding:5%;
+	box-shadow:0 10px 100px 2px grey;
+}
+#totalBiasArea{
+	border:6px solid blue;
+	height:12vh;
+	text-align:center;
+	width:80%;
+	border-bottom-left-radius:30%;
+	border-bottom-right-radius:30%;
+	padding:5%;
+	box-shadow:0 10px 100px 2px grey;
+}
+</style>
 </head>
 <body>
 <div class="well-lg">
@@ -11,9 +33,12 @@
 <br/>
 <br/>
 <button class="btn btn-success btn-lg btn-block" onclick="bias.percentBias(document.getElementById('userInput').value)">Percent Bias</button>
+
+<center><div id="percentBiasArea"></div></center>
 <br/>
 
 <button class="btn btn-primary btn-lg btn-block" onclick="bias.totalBiasWords(document.getElementById('userInput').value)">Total Bias Words</button>
+<center><div id="totalBiasArea"></div></center>
 </div>
 </body>
 </html>
