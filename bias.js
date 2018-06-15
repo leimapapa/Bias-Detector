@@ -21,8 +21,6 @@ In (1), the term McMansion, unlike
 homes, appeals to a negative attitude toward largeand pretentious houses. 
 */
 
-
-
 //Epistemological Bias
  
 /*
@@ -43,7 +41,7 @@ which casts doubt on Kuypers’ statement.
 Epistemological bias is bidirectional, that is,
 bias can occur because doubt is cast on a proposition
 commonly assumed to be true, or because
-ua presupposition or implication is made about a
+ ua presupposition or implication is made about a
 proposition commonly assumed to be false
 */
 /*Percent of bias seen on Wikipedia by subtype.
@@ -64,30 +62,34 @@ B. Framing bias 57
 - Intensifiers 19 -- 33.3%
 - One-sided terms 38 -- 66.6*/
 
+
 var biasWords = [];
 
 //Epistemological bias - arrays of biased language
+//***********************************************
+
+//Factive predicate = a predicate which entails or presupposes the truth of one of its arguments. 7%
+//http://computing-reports.open.ac.uk/2009/TR2009-09.pdf page 40 "Hooper"
+var factivePredicates = ["realized", "revealed","find out","regret","discovered","resented","knew","forgot","learned","amused","noted","sufficed","noticed","bothered","observed","make sense","perceived","cared","realized","be odd","recalled","be strange","remembered","be interesting","be relevant","saw","be sorry","be exciting"];
 
 
-//Factive predicate = a predicate which entails or presupposes the truth of one of its arguments.
-var factivePredicates = ["realized", "revealed"];
-
-
-//Entailments = directional relations that hold whenever the truth of one word or phrase follows from another, //e.g., murder entails kill because there cannot be murdering without killing 
+//Entailments = directional relations that hold whenever the truth of one word or phrase follows from another, 58%
+//e.g., murder entails kill because there cannot be murdering without killing 
 var entailments = ["murder", "slay","was coerced into"];
 
 
-//Assertives - those verbs whose complement clauses assert a proposition
-var assertives = ["pointed out", "clearly states"];
+//Assertives - those verbs whose complement clauses assert a proposition 26% 
+var assertives = ["pointed out", "clearly states","touted","publicized","clearly showed"];
 
 
-//Hedges - used to reduce one’s commitment to the truth of a proposition, thus avoiding any bold predictions
-var hedges = ["will","certainly","undoubtedly"];
-
-
+//Hedges - used to reduce one’s commitment to the truth of a proposition, thus avoiding any bold predictions 9%
+// https://www.thoughtco.com/verbal-hedge-communication-1692585 quoting "The Sense of Style," 2014
+var hedges = ["will","certainly","undoubtedly","maybe","almost","apparently","comparatively","fairly","in part","nearly","partially","predominantly","presumably","rather","relatively","seemingly","so to speak","somewhat","sort of","to a certain degree","to some extent","would argue"];
+//***************************************************
+//***************************************************
 //Framing bias - arrays of biased language
 
-//Intensifiers - adjectives or adverbs that ADD (subjective) force to the meaning of a phrase or proposition.
+//Intensifiers - adjectives or adverbs that ADD (subjective) force to the meaning of a phrase or proposition. 33% 
 var intensifiers = ["fantastic","outrageous","outstanding", "hatred", "love", "vile", "disgusting", "so", "sick", "phenomenally", "too", "moderately", "uncommonly", "very", "wicked", "outrageously", "really", "fantastically", "awful", "awful good", "rather", "mightily", "bloody", "somewhat", "supremely", "dead", "dead wrong", "fully", "dreadfully", "-ass", "a sweet-ass ride", "insanely", "extremely", "super", "strikingly", "fucking", "veritable", "extraordinarily", "hella", "crazy", "amazingly", "most", "terrifically", "radically", "precious", "precious little", "surpassingly", "unusually", "quite", "excessively", "exceptionally", "loony", "real nice", "colossally", "incredibly", "remarkably", "frightfully", "totally", "terribly", "astoundingly", "especially","desperately","wisely","indecently","vulgarly","incomparably","odious","utmost","self-proclaimed"];
 
 var posIntensifiers = ["as hell", "fiercely", "hugely", "absolutely", "completely", "extremely", "highly", "rather", "really", "totally", "utterly", "very", "awful", "deucedly", "emphatically", "excellently", "fabulously", "fantastically", "genuinely", "gloriously", "immensely", "incredibly", "insanely", "keenly", "madly", "magnificently", "marvelously", "splendidly", "supremely", "terrifically", "truly", "unquestionably", "wonderfully","devestatingly","in sharp contrast","deservedly","exactly right"];
@@ -96,15 +98,18 @@ var negIntensifiers = ["savagely","insane","crazy","dreadfully","colossally", "e
 
 //Minimizers - adjectives or adverbs that REMOVE (subjective) force from the meaning of a phrase or proposition.
 var minimizers = ["just"];
+//******************************************
 
 
-//One-sided Terms - reflect only one of the sides of a contentious issue.
+//One-sided Terms - reflect only one of the sides of a contentious issue. 66%
 var oneSidedTerms = ["pro-choice","pro-life","liberated","captured","terrorist","paramilitary","captured","recorded"];
+
 
 //Flip-side of each term should be listed in the same index
 var posOneSidedTerms = ["pro-choice","pro-life","liberated","paramilitary","gender confirmation surgery","called out","takedown","earned","call out","witch hunt","pushed back","refused","landslide","undocumented migrant","demand"];
 var negOneSidedTerms = ["pro-abortion","anti-choice","captured","terrorist","gender reassignment surgery","assailed","rant","unfairly received","attack","investigation","disagreed","declined","wide margin","illegal immigrant","request"];
 
+//******************************************
 
 //Unprovable assertions about another human's thought process/includes oft-misused inflamatory language
 /*
@@ -115,11 +120,17 @@ https://libertynewsnow.com/a-guide-to-21-liberal-buzzwords/article5004 - liberal
 var buzzwords = ["-phobic","-phobia","racist","classist","sexist","misogynist","bigot","anti-semitic","hypocrisy","gun-grabber","climate-denier","shill","fat-shame","white privilege","mansplain","problematic","politically correct","raise awareness","create a dialog","deepen the conversation","empower","safe space","social justice","tolerance","snowflake","meltdown","feminazi","-tard","libtard","conservitard","cuck","cuckservative","SJW","triggered","gender-neutral","extremist","gatekeeper","gaslight","puppet","trolled","liberal media","conservative media","authoritarianism","intolerance","hate speech","offensive"];
 
 
+
 //Stop words - words so common that you should ignore them completely (taken from Python NLTK)
-var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
+
+var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"];
+
+var punctuation = ["'","\"",",",".","?",":",";","!","#","--","-","%"];
+
 
 
 //put suspect words and phrases HERE. (debatable bias, lack of classification, etc.)
+
 //*************
 /*
 "targeted for harassment"
@@ -127,7 +138,7 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "went viral"
 "viral tweet"
 "broke the internet"
-"off the rails"
+off the rails"
 "in solidarity with"
 "could spell disaster"
 "smash hit"
@@ -145,10 +156,14 @@ var stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'y
 "backtracking"
 "tore apart"
 "dehumanize"
+demonstrator, marcher, objector, picketer, protester (or protestor)
+advocate, apostle, backer, booster, champion, exponent, persuader, promoter, proponent, reformer, reformist, supporter
+alarmist, extremist, insurgent, insurrectionist, radical, rebel, revolter, revolutionary, revolutionist, subversive, troublemaker
+prodder, prompter, provoker,agent provocateur,peacemaker, reconciler, uniter
 */
 //*************
 
-var punctuation = ["'","\"",",",".","?",":",";","!","#","--","-","%"];
+
 
 
 //**************begin bias functions***************
@@ -157,13 +172,13 @@ var bias = {
 
 //framing bias
 framing: function(userInput){
-	
+// intensifiers + one-sided terms + buzzwords
 },
 
 
 //epistemological bias
 epistemological:function(userInput){
-	
+//factive predicates, entailments, assertives, hedges, 	
 },
 	
 
