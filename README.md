@@ -17,6 +17,7 @@ The main source so far is this research paper on neutrality in writing from Stan
 ## Usage
 
 ```javascript
-bias.totalBiasWords("This is terrible")
+bias.totalBiasWords("This is terrible"); // 1 bias word
+
 bias.percentBias("This is terrible");  // 1 bias word out of 1 meaningful words = 100%
 ```
